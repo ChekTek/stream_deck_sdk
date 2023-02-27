@@ -2,7 +2,7 @@ import 'api.dart';
 import 'events.dart';
 
 class Inspector extends API {
-  void onSendToPropertyInspector(Function callback) {
+  void onSendToPropertyInspector(Function(Map event) callback) {
     this.on(EventsReceived.sendToPropertyInspector, callback);
   }
 

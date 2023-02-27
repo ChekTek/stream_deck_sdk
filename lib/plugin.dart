@@ -46,23 +46,23 @@ class Plugin extends API {
     this.send(context, EventsSent.setFeedbackLayout, layout);
   }
 
-  void onDeviceDidConnect(Function callback) {
+  void onDeviceDidConnect(Function(Map event) callback) {
     this.on(EventsReceived.deviceDidConnect, callback);
   }
 
-  void onDeviceDidDisconnect(Function callback) {
+  void onDeviceDidDisconnect(Function(Map event) callback) {
     this.on(EventsReceived.deviceDidDisconnect, callback);
   }
 
-  void onApplicationDidLaunch(Function callback) {
+  void onApplicationDidLaunch(Function(Map event) callback) {
     this.on(EventsReceived.applicationDidLaunch, callback);
   }
 
-  void onApplicationDidTerminate(Function callback) {
+  void onApplicationDidTerminate(Function(Map event) callback) {
     this.on(EventsReceived.applicationDidTerminate, callback);
   }
 
-  void onSystemDidWakeUp(Function callback) {
+  void onSystemDidWakeUp(Function(Map event) callback) {
     this.on(EventsReceived.systemDidWakeUp, callback);
   }
 
