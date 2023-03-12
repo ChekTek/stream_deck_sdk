@@ -1,11 +1,11 @@
 abstract class EventManager {
   static final _listeners = new Map<String, Function>();
 
-  static void on(String event, Function(dynamic event) callback) {
+  static void on<T>(String event, Function(T event) callback) {
     _listeners.addAll({event: callback});
   }
 
-  static void emit(String event, dynamic data) {
+  static void emit<T>(String event, T data) {
     if (_listeners.containsKey(event)) {
       _listeners[event]!(data);
     }

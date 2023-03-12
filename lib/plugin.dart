@@ -1,5 +1,6 @@
 import 'api.dart';
 import 'events.dart';
+import 'event_manager.dart';
 
 class Plugin extends API {
   void showAlert(String context) {
@@ -47,23 +48,23 @@ class Plugin extends API {
   }
 
   void onDeviceDidConnect(Function(dynamic event) callback) {
-    this.on(EventsReceived.deviceDidConnect, callback);
+    EventManager.on(EventsReceived.deviceDidConnect, callback);
   }
 
   void onDeviceDidDisconnect(Function(dynamic event) callback) {
-    this.on(EventsReceived.deviceDidDisconnect, callback);
+    EventManager.on(EventsReceived.deviceDidDisconnect, callback);
   }
 
   void onApplicationDidLaunch(Function(dynamic event) callback) {
-    this.on(EventsReceived.applicationDidLaunch, callback);
+    EventManager.on(EventsReceived.applicationDidLaunch, callback);
   }
 
   void onApplicationDidTerminate(Function(dynamic event) callback) {
-    this.on(EventsReceived.applicationDidTerminate, callback);
+    EventManager.on(EventsReceived.applicationDidTerminate, callback);
   }
 
   void onSystemDidWakeUp(Function(dynamic event) callback) {
-    this.on(EventsReceived.systemDidWakeUp, callback);
+    EventManager.on(EventsReceived.systemDidWakeUp, callback);
   }
 
   void switchToProfile(String context, String device, String profile) {

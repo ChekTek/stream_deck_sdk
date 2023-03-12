@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'event_manager.dart';
 import 'events.dart';
 
@@ -10,29 +12,31 @@ abstract class Logger {
     EventManager.emit(EventsSent.logMessage, message);
   }
 
-  static debug(String message) {
-    if (logLevel.index >= LogLevel.debug.index) {
-      _send('DEBUG: ${message}');
-      print('DEBUG: ${message}');
+  static debug(dynamic message) {
+    if (logLevel.index <= LogLevel.debug.index) {
+      final String debugMessage = 'DEBUG: ${jsonEncode(message)}';
+      _send(debugMessage);
+      print(debugMessage);
     }
   }
 
-  static log(String message) {
-    if (logLevel.index >= LogLevel.log.index) {
-      _send(message);
+  static log(dynamic message) {
+    if (logLevel.index <= LogLevel.log.index) {
+      _send(jsonEncode(message));
     }
   }
 
-  static warn(String message) {
-    if (logLevel.index >= LogLevel.warn.index) {
-      _send('WARN: ${message}');
+  static warn(dynamic message) {
+    if (logLevel.index <= LogLevel.warn.index) {
+      _send('WARN: ${jsonEncode(message)}');
     }
   }
 
-  static error(String message) {
-    if (logLevel.index >= LogLevel.error.index) {
-      _send('ERROR: ${message}');
-      print('ERROR: ${message}');
+  static error(dynamic message) {
+    if (logLevel.index <= LogLevel.error.index) {
+      final String errorMessage = 'ERROR: ${jsonEncode(message)}';
+      _send(errorMessage);
+      print(errorMessage);
     }
   }
 }

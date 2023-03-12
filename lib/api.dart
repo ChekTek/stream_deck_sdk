@@ -4,20 +4,14 @@ import 'dart:io';
 import 'event_manager.dart';
 import 'events.dart';
 import 'plugin_arguments.dart';
+import 'logger.dart';
+import 'events/did_receive_settings_event.dart';
 
 abstract class API {
   int? _port;
   String? uuid;
   Info? _info;
   WebSocket? _websocket;
-
-  void on(String event, Function(dynamic event) callback) {
-    EventManager.on(event, callback);
-  }
-
-  void emit(String event, Map data) {
-    EventManager.emit(event, data);
-  }
 
   Future<void> connect(PluginArguments arguments) async {
     this._port = arguments.port;
@@ -33,24 +27,31 @@ abstract class API {
 
     this._websocket!.add(jsonEncode({"uuid": this.uuid, "event": "registerPlugin"}));
 
-    this.on(EventsSent.logMessage, (message) {
-      this.logMessage(message);
+    EventManager.on(EventsSent.logMessage, (message) {
+      this.logMessage(message as String);
     });
 
-    this.emit(EventsReceived.connected, {
+    EventManager.emit(EventsReceived.connected, {
       "uuid": this.uuid,
       "info": this._info,
     });
 
     this._websocket!.listen((socketEvent) {
       var data = jsonDecode(socketEvent);
+      Logger.debug(data);
       if (data != null) {
         var action = data['action'];
         var event = data['event'];
         var message = action != null ? '${action}.${event}' : event;
 
         if (message != null) {
-          this.emit(message, data);
+          switch (event) {
+            case EventsReceived.didReceiveSettings:
+              EventManager.emit<DidReceiveSettingsEvent>(message, DidReceiveSettingsEvent.fromJson(data));
+              break;
+            default:
+              EventManager.emit(message, data);
+          }
         }
       }
     });
@@ -91,14 +92,14 @@ abstract class API {
   }
 
   void onConnected(Function(dynamic event) callback) {
-    this.on(EventsReceived.connected, callback);
+    EventManager.on(EventsReceived.connected, callback);
   }
 
   void onDidReceiveGlobalSettings(Function(dynamic event) callback) {
-    this.on(EventsReceived.didReceiveGlobalSettings, callback);
+    EventManager.on(EventsReceived.didReceiveGlobalSettings, callback);
   }
 
   void onDidReceiveSettings(String action, Function(dynamic event) callback) {
-    this.on(action + EventsReceived.didReceiveSettings, callback);
+    EventManager.on(action + EventsReceived.didReceiveSettings, callback);
   }
 }
