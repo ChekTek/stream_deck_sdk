@@ -4,3 +4,4 @@ export 'api.dart';
 export 'event_manager.dart';
 export 'events.dart';
 export 'inspector.dart';
+export 'logger.dart';

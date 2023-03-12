@@ -1,7 +1,7 @@
 abstract class EventManager {
   static final _listeners = new Map<String, Function>();
 
-  static void on(String event, Function(Map event) callback) {
+  static void on(String event, Function(dynamic event) callback) {
     _listeners.addAll({event: callback});
   }
 

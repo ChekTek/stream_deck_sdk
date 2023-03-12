@@ -6,7 +6,7 @@ class Action {
 
   Action(this._uuid);
 
-  void on(String event, Function(Map event) callback) {
+  void on(String event, Function(dynamic event) callback) {
     EventManager.on(event, callback);
   }
 
@@ -14,51 +14,55 @@ class Action {
     EventManager.emit(event, data);
   }
 
-  void onDidReceiveSettings(Function(Map event) callback) {
+  void logMessage(String message) {
+    EventManager.emit(EventsSent.logMessage, message);
+  }
+
+  void onDidReceiveSettings(Function(dynamic event) callback) {
     this.on('${this._uuid}.${EventsReceived.didReceiveSettings}', callback);
   }
 
-  void onKeyDown(Function(Map event) callback) {
+  void onKeyDown(Function(dynamic event) callback) {
     this.on('${this._uuid}.${EventsReceived.keyDown}', callback);
   }
 
-  void onKeyUp(Function(Map event) callback) {
+  void onKeyUp(Function(dynamic event) callback) {
     this.on('${this._uuid}.${EventsReceived.keyUp}', callback);
   }
 
-  void onWillAppear(Function(Map event) callback) {
+  void onWillAppear(Function(dynamic event) callback) {
     this.on('${this._uuid}.${EventsReceived.willAppear}', callback);
   }
 
-  void onWillDisappear(Function(Map event) callback) {
+  void onWillDisappear(Function(dynamic event) callback) {
     this.on('${this._uuid}.${EventsReceived.willDisappear}', callback);
   }
 
-  void onTitleParametersDidChange(Function(Map event) callback) {
+  void onTitleParametersDidChange(Function(dynamic event) callback) {
     this.on('${this._uuid}.${EventsReceived.titleParametersDidChange}', callback);
   }
 
-  void onPropertyInspectorDidAppear(Function(Map event) callback) {
+  void onPropertyInspectorDidAppear(Function(dynamic event) callback) {
     this.on('${this._uuid}.${EventsReceived.propertyInspectorDidAppear}', callback);
   }
 
-  void onPropertyInspectorDidDisappear(Function(Map event) callback) {
+  void onPropertyInspectorDidDisappear(Function(dynamic event) callback) {
     this.on('${this._uuid}.${EventsReceived.propertyInspectorDidDisappear}', callback);
   }
 
-  void onSendToPlugin(Function(Map event) callback) {
+  void onSendToPlugin(Function(dynamic event) callback) {
     this.on('${this._uuid}.${EventsReceived.sendToPlugin}', callback);
   }
 
-  void onDialRotate(Function(Map event) callback) {
+  void onDialRotate(Function(dynamic event) callback) {
     this.on('${this._uuid}.${EventsReceived.dialRotate}', callback);
   }
 
-  void onDialPress(Function(Map event) callback) {
+  void onDialPress(Function(dynamic event) callback) {
     this.on('${this._uuid}.${EventsReceived.dialPress}', callback);
   }
 
-  void onTouchTap(Function(Map event) callback) {
+  void onTouchTap(Function(dynamic event) callback) {
     this.on('${this._uuid}.${EventsReceived.touchTap}', callback);
   }
 }
