@@ -1,30 +1,30 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:stream_deck_sdk/events/application_did_launch_event.dart';
-import 'package:stream_deck_sdk/events/device_did_connect_event.dart';
-import 'package:stream_deck_sdk/events/device_did_disconnect_event.dart';
-import 'package:stream_deck_sdk/events/dial_down_event.dart';
-import 'package:stream_deck_sdk/events/dial_rotate_event.dart';
-import 'package:stream_deck_sdk/events/dial_up_event.dart';
-import 'package:stream_deck_sdk/events/did_receive_global_settings_event.dart';
-import 'package:stream_deck_sdk/events/key_down_event.dart';
-import 'package:stream_deck_sdk/events/key_up_event.dart';
-import 'package:stream_deck_sdk/events/property_inspector_did_appear_event.dart';
-import 'package:stream_deck_sdk/events/property_inspector_did_disappear_event.dart';
-import 'package:stream_deck_sdk/events/send_to_plugin_event.dart';
-import 'package:stream_deck_sdk/events/send_to_property_inspector_event.dart';
-import 'package:stream_deck_sdk/events/system_did_wake_up_event.dart';
-import 'package:stream_deck_sdk/events/title_parameters_did_change_event.dart';
-import 'package:stream_deck_sdk/events/touch_tap_event.dart';
-import 'package:stream_deck_sdk/events/will_appear_event.dart';
-import 'package:stream_deck_sdk/events/will_disappear_event.dart';
+import 'package:stream_deck_sdk/events/application_did_launch.dart';
+import 'package:stream_deck_sdk/events/device_did_connect.dart';
+import 'package:stream_deck_sdk/events/device_did_disconnect.dart';
+import 'package:stream_deck_sdk/events/dial_down.dart';
+import 'package:stream_deck_sdk/events/dial_rotate.dart';
+import 'package:stream_deck_sdk/events/dial_up.dart';
+import 'package:stream_deck_sdk/events/did_receive_global_settings.dart';
+import 'package:stream_deck_sdk/events/key_down.dart';
+import 'package:stream_deck_sdk/events/key_up.dart';
+import 'package:stream_deck_sdk/events/property_inspector_did_appear.dart';
+import 'package:stream_deck_sdk/events/property_inspector_did_disappear.dart';
+import 'package:stream_deck_sdk/events/send_to_plugin.dart';
+import 'package:stream_deck_sdk/events/send_to_property_inspector.dart';
+import 'package:stream_deck_sdk/events/system_did_wake_up.dart';
+import 'package:stream_deck_sdk/events/title_parameters_did_change.dart';
+import 'package:stream_deck_sdk/events/touch_tap.dart';
+import 'package:stream_deck_sdk/events/will_appear.dart';
+import 'package:stream_deck_sdk/events/will_disappear.dart';
 
 import 'event_manager.dart';
 import 'events.dart';
 import 'plugin_arguments.dart';
 import 'logger.dart';
-import 'events/did_receive_settings_event.dart';
+import 'events/did_receive_settings.dart';
 
 abstract class API {
   int? _port;
@@ -78,7 +78,7 @@ abstract class API {
               EventManager.emit<KeyUp>(message, KeyUp.fromJson(data));
               break;
             case EventsReceived.touchTap:
-              EventManager.emit<TouchTapEvent>(message, TouchTapEvent.fromJson(data));
+              EventManager.emit<TouchTap>(message, TouchTap.fromJson(data));
               break;
             case EventsReceived.dialDown:
               EventManager.emit<DialDown>(message, DialDown.fromJson(data));
@@ -90,13 +90,13 @@ abstract class API {
               EventManager.emit<DialRotate>(message, DialRotate.fromJson(data));
               break;
             case EventsReceived.willAppear:
-              EventManager.emit<WillAppearEvent>(message, WillAppearEvent.fromJson(data));
+              EventManager.emit<WillAppear>(message, WillAppear.fromJson(data));
               break;
             case EventsReceived.willDisappear:
-              EventManager.emit<WillDisappearEvent>(message, WillDisappearEvent.fromJson(data));
+              EventManager.emit<WillDisappear>(message, WillDisappear.fromJson(data));
               break;
             case EventsReceived.titleParametersDidChange:
-              EventManager.emit<TitleParametersDidChangeEvent>(message, TitleParametersDidChangeEvent.fromJson(data));
+              EventManager.emit<TitleParametersDidChange>(message, TitleParametersDidChange.fromJson(data));
               break;
             case EventsReceived.deviceDidConnect:
               EventManager.emit<DeviceDidConnect>(message, DeviceDidConnect.fromJson(data));
@@ -108,21 +108,19 @@ abstract class API {
               EventManager.emit<ApplicationDidLaunch>(message, ApplicationDidLaunch.fromJson(data));
               break;
             case EventsReceived.systemDidWakeUp:
-              EventManager.emit<SystemDidWakeUpEvent>(message, SystemDidWakeUpEvent.fromJson(data));
+              EventManager.emit<SystemDidWakeUp>(message, SystemDidWakeUp.fromJson(data));
               break;
             case EventsReceived.propertyInspectorDidAppear:
-              EventManager.emit<PropertyInspectorDidAppearEvent>(
-                  message, PropertyInspectorDidAppearEvent.fromJson(data));
+              EventManager.emit<PropertyInspectorDidAppear>(message, PropertyInspectorDidAppear.fromJson(data));
               break;
             case EventsReceived.propertyInspectorDidDisappear:
-              EventManager.emit<PropertyInspectorDidDisappearEvent>(
-                  message, PropertyInspectorDidDisappearEvent.fromJson(data));
+              EventManager.emit<PropertyInspectorDidDisappear>(message, PropertyInspectorDidDisappear.fromJson(data));
               break;
             case EventsReceived.sendToPlugin:
-              EventManager.emit<SendToPluginEvent>(message, SendToPluginEvent.fromJson(data));
+              EventManager.emit<SendToPlugin>(message, SendToPlugin.fromJson(data));
               break;
             case EventsReceived.sendToPropertyInspector:
-              EventManager.emit<SendToPropertyInspectorEvent>(message, SendToPropertyInspectorEvent.fromJson(data));
+              EventManager.emit<SendToPropertyInspector>(message, SendToPropertyInspector.fromJson(data));
               break;
             default:
               EventManager.emit(message, data);

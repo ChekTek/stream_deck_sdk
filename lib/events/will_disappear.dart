@@ -1,9 +1,9 @@
 import 'package:stream_deck_sdk/events/event.dart';
 
-class TouchTapEvent extends DeviceEvent {
+class WillDisappear extends DeviceEvent {
   late _Payload payload;
 
-  TouchTapEvent.fromJson(Map<String, dynamic> json) {
+  WillDisappear.fromJson(Map<String, dynamic> json) {
     action = json['action'];
     context = json['context'];
     device = json['device'];
@@ -13,14 +13,12 @@ class TouchTapEvent extends DeviceEvent {
 }
 
 class _Payload extends ContextPayload {
-  late bool? hold;
-  late List<int>? tapPos;
+  late bool isInMultiAction;
 
   _Payload.fromJson(Map<String, dynamic> json) {
     controller = json['controller'];
     coordinates = Coordinates.fromJson(json['coordinates']);
-    hold = json['hold'];
+    isInMultiAction = json['isInMultiAction'];
     settings = json['settings'];
-    tapPos = json['tapPos'].cast<int>();
   }
 }

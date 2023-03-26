@@ -1,19 +1,19 @@
-import 'package:stream_deck_sdk/events/dial_down_event.dart';
-import 'package:stream_deck_sdk/events/dial_rotate_event.dart';
-import 'package:stream_deck_sdk/events/dial_up_event.dart';
-import 'package:stream_deck_sdk/events/key_down_event.dart';
-import 'package:stream_deck_sdk/events/key_up_event.dart';
-import 'package:stream_deck_sdk/events/property_inspector_did_appear_event.dart';
-import 'package:stream_deck_sdk/events/property_inspector_did_disappear_event.dart';
-import 'package:stream_deck_sdk/events/send_to_plugin_event.dart';
-import 'package:stream_deck_sdk/events/title_parameters_did_change_event.dart';
-import 'package:stream_deck_sdk/events/touch_tap_event.dart';
-import 'package:stream_deck_sdk/events/will_appear_event.dart';
-import 'package:stream_deck_sdk/events/will_disappear_event.dart';
+import 'package:stream_deck_sdk/events/dial_down.dart';
+import 'package:stream_deck_sdk/events/dial_rotate.dart';
+import 'package:stream_deck_sdk/events/dial_up.dart';
+import 'package:stream_deck_sdk/events/key_down.dart';
+import 'package:stream_deck_sdk/events/key_up.dart';
+import 'package:stream_deck_sdk/events/property_inspector_did_appear.dart';
+import 'package:stream_deck_sdk/events/property_inspector_did_disappear.dart';
+import 'package:stream_deck_sdk/events/send_to_plugin.dart';
+import 'package:stream_deck_sdk/events/title_parameters_did_change.dart';
+import 'package:stream_deck_sdk/events/touch_tap.dart';
+import 'package:stream_deck_sdk/events/will_appear.dart';
+import 'package:stream_deck_sdk/events/will_disappear.dart';
 
 import 'event_manager.dart';
 import 'events.dart';
-import 'events/did_receive_settings_event.dart';
+import 'events/did_receive_settings.dart';
 
 class Action {
   final String _uuid;
@@ -44,31 +44,31 @@ class Action {
     EventManager.on<KeyUp>('${this._uuid}.${EventsReceived.keyUp}', callback);
   }
 
-  void onWillAppear(Function(WillAppearEvent event) callback) {
-    EventManager.on<WillAppearEvent>('${this._uuid}.${EventsReceived.willAppear}', callback);
+  void onWillAppear(Function(WillAppear event) callback) {
+    EventManager.on<WillAppear>('${this._uuid}.${EventsReceived.willAppear}', callback);
   }
 
-  void onWillDisappear(Function(WillDisappearEvent event) callback) {
-    EventManager.on<WillDisappearEvent>('${this._uuid}.${EventsReceived.willDisappear}', callback);
+  void onWillDisappear(Function(WillDisappear event) callback) {
+    EventManager.on<WillDisappear>('${this._uuid}.${EventsReceived.willDisappear}', callback);
   }
 
-  void onTitleParametersDidChange(Function(TitleParametersDidChangeEvent event) callback) {
-    EventManager.on<TitleParametersDidChangeEvent>(
+  void onTitleParametersDidChange(Function(TitleParametersDidChange event) callback) {
+    EventManager.on<TitleParametersDidChange>(
         '${this._uuid}.${EventsReceived.titleParametersDidChange}', callback);
   }
 
-  void onPropertyInspectorDidAppear(Function(PropertyInspectorDidAppearEvent event) callback) {
-    EventManager.on<PropertyInspectorDidAppearEvent>(
+  void onPropertyInspectorDidAppear(Function(PropertyInspectorDidAppear event) callback) {
+    EventManager.on<PropertyInspectorDidAppear>(
         '${this._uuid}.${EventsReceived.propertyInspectorDidAppear}', callback);
   }
 
-  void onPropertyInspectorDidDisappear(Function(PropertyInspectorDidDisappearEvent event) callback) {
-    EventManager.on<PropertyInspectorDidDisappearEvent>(
+  void onPropertyInspectorDidDisappear(Function(PropertyInspectorDidDisappear event) callback) {
+    EventManager.on<PropertyInspectorDidDisappear>(
         '${this._uuid}.${EventsReceived.propertyInspectorDidDisappear}', callback);
   }
 
-  void onSendToPlugin(Function(SendToPluginEvent event) callback) {
-    EventManager.on<SendToPluginEvent>('${this._uuid}.${EventsReceived.sendToPlugin}', callback);
+  void onSendToPlugin(Function(SendToPlugin event) callback) {
+    EventManager.on<SendToPlugin>('${this._uuid}.${EventsReceived.sendToPlugin}', callback);
   }
 
   void onDialRotate(Function(DialRotate event) callback) {
@@ -83,7 +83,7 @@ class Action {
     EventManager.on<DialUp>('${this._uuid}.${EventsReceived.dialUp}', callback);
   }
 
-  void onTouchTap(Function(TouchTapEvent event) callback) {
-    EventManager.on<TouchTapEvent>('${this._uuid}.${EventsReceived.touchTap}', callback);
+  void onTouchTap(Function(TouchTap event) callback) {
+    EventManager.on<TouchTap>('${this._uuid}.${EventsReceived.touchTap}', callback);
   }
 }

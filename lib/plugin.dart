@@ -1,8 +1,8 @@
-import 'package:stream_deck_sdk/events/application_did_launch_event.dart';
-import 'package:stream_deck_sdk/events/application_did_terminate_event.dart';
-import 'package:stream_deck_sdk/events/device_did_connect_event.dart';
-import 'package:stream_deck_sdk/events/device_did_disconnect_event.dart';
-import 'package:stream_deck_sdk/events/system_did_wake_up_event.dart';
+import 'package:stream_deck_sdk/events/application_did_launch.dart';
+import 'package:stream_deck_sdk/events/application_did_terminate.dart';
+import 'package:stream_deck_sdk/events/device_did_connect.dart';
+import 'package:stream_deck_sdk/events/device_did_disconnect.dart';
+import 'package:stream_deck_sdk/events/system_did_wake_up.dart';
 
 import 'api.dart';
 import 'events.dart';
@@ -69,8 +69,8 @@ class Plugin extends API {
     EventManager.on<ApplicationDidTerminate>(EventsReceived.applicationDidTerminate, callback);
   }
 
-  void onSystemDidWakeUp(Function(SystemDidWakeUpEvent event) callback) {
-    EventManager.on<SystemDidWakeUpEvent>(EventsReceived.systemDidWakeUp, callback);
+  void onSystemDidWakeUp(Function(SystemDidWakeUp event) callback) {
+    EventManager.on<SystemDidWakeUp>(EventsReceived.systemDidWakeUp, callback);
   }
 
   void switchToProfile(String context, String device, String profile) {

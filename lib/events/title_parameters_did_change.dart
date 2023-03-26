@@ -1,9 +1,9 @@
 import 'package:stream_deck_sdk/events/event.dart';
 
-class TitleParametersDidChangeEvent extends DeviceEvent {
+class TitleParametersDidChange extends DeviceEvent {
   late _Payload payload;
 
-  TitleParametersDidChangeEvent.fromJson(Map<String, dynamic> json) {
+  TitleParametersDidChange.fromJson(Map<String, dynamic> json) {
     action = json['action'];
     context = json['context'];
     device = json['device'];

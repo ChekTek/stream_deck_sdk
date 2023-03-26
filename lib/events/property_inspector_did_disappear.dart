@@ -1,7 +1,7 @@
 import 'event.dart';
 
-class PropertyInspectorDidDisappearEvent extends DeviceEvent {
-  PropertyInspectorDidDisappearEvent.fromJson(Map<String, dynamic> json) {
+class PropertyInspectorDidDisappear extends DeviceEvent {
+  PropertyInspectorDidDisappear.fromJson(Map<String, dynamic> json) {
     action = json['action'];
     context = json['context'];
     device = json['device'];
