@@ -1,13 +1,13 @@
-class DidReceiveSettingsEvent {
+class KeyDownEvent {
   String? action;
   String? context;
   String? device;
   String? event;
   Payload? payload;
 
-  DidReceiveSettingsEvent({this.action, this.context, this.device, this.event, this.payload});
+  KeyDownEvent({this.action, this.context, this.device, this.event, this.payload});
 
-  DidReceiveSettingsEvent.fromJson(Map<String, dynamic> json) {
+  KeyDownEvent.fromJson(Map<String, dynamic> json) {
     action = json['action'];
     context = json['context'];
     device = json['device'];

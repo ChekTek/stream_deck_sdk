@@ -28,7 +28,7 @@ class Coordinates {
 class Payload {
   Coordinates? coordinates;
   bool? isInMultiAction;
-  Map? settings;
+  dynamic settings;
 
   Payload({this.coordinates, this.isInMultiAction, this.settings});
 

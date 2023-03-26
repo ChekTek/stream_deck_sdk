@@ -1,13 +1,13 @@
-class DidReceiveSettingsEvent {
+class TitleParametersDidChangeEvent {
   String? action;
   String? context;
   String? device;
   String? event;
   Payload? payload;
 
-  DidReceiveSettingsEvent({this.action, this.context, this.device, this.event, this.payload});
+  TitleParametersDidChangeEvent({this.action, this.context, this.device, this.event, this.payload});
 
-  DidReceiveSettingsEvent.fromJson(Map<String, dynamic> json) {
+  TitleParametersDidChangeEvent.fromJson(Map<String, dynamic> json) {
     action = json['action'];
     context = json['context'];
     device = json['device'];
@@ -30,15 +30,19 @@ class DidReceiveSettingsEvent {
 
 class Payload {
   Coordinates? coordinates;
-  bool? isInMultiAction;
   dynamic settings;
+  int? state;
+  String? title;
+  TitleParameters? titleParameters;
 
-  Payload({this.coordinates, this.isInMultiAction, this.settings});
+  Payload({this.coordinates, this.settings, this.state, this.title, this.titleParameters});
 
   Payload.fromJson(Map<String, dynamic> json) {
     coordinates = json['coordinates'] != null ? new Coordinates.fromJson(json['coordinates']) : null;
-    isInMultiAction = json['isInMultiAction'];
     settings = json['settings'] != null ? new Settings.fromJson(json['settings']) : null;
+    state = json['state'];
+    title = json['title'];
+    titleParameters = json['titleParameters'] != null ? new TitleParameters.fromJson(json['titleParameters']) : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -46,9 +50,13 @@ class Payload {
     if (this.coordinates != null) {
       data['coordinates'] = this.coordinates!.toJson();
     }
-    data['isInMultiAction'] = this.isInMultiAction;
     if (this.settings != null) {
       data['settings'] = this.settings!.toJson();
+    }
+    data['state'] = this.state;
+    data['title'] = this.title;
+    if (this.titleParameters != null) {
+      data['titleParameters'] = this.titleParameters!.toJson();
     }
     return data;
   }
@@ -85,6 +93,47 @@ class Settings {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['skill'] = this.skill;
+    return data;
+  }
+}
+
+class TitleParameters {
+  String? fontFamily;
+  int? fontSize;
+  String? fontStyle;
+  bool? fontUnderline;
+  bool? showTitle;
+  String? titleAlignment;
+  String? titleColor;
+
+  TitleParameters(
+      {this.fontFamily,
+      this.fontSize,
+      this.fontStyle,
+      this.fontUnderline,
+      this.showTitle,
+      this.titleAlignment,
+      this.titleColor});
+
+  TitleParameters.fromJson(Map<String, dynamic> json) {
+    fontFamily = json['fontFamily'];
+    fontSize = json['fontSize'];
+    fontStyle = json['fontStyle'];
+    fontUnderline = json['fontUnderline'];
+    showTitle = json['showTitle'];
+    titleAlignment = json['titleAlignment'];
+    titleColor = json['titleColor'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['fontFamily'] = this.fontFamily;
+    data['fontSize'] = this.fontSize;
+    data['fontStyle'] = this.fontStyle;
+    data['fontUnderline'] = this.fontUnderline;
+    data['showTitle'] = this.showTitle;
+    data['titleAlignment'] = this.titleAlignment;
+    data['titleColor'] = this.titleColor;
     return data;
   }
 }

@@ -1,13 +1,13 @@
-class DidReceiveSettingsEvent {
+class DialUpEvent {
   String? action;
   String? context;
   String? device;
   String? event;
   Payload? payload;
 
-  DidReceiveSettingsEvent({this.action, this.context, this.device, this.event, this.payload});
+  DialUpEvent({this.action, this.context, this.device, this.event, this.payload});
 
-  DidReceiveSettingsEvent.fromJson(Map<String, dynamic> json) {
+  DialUpEvent.fromJson(Map<String, dynamic> json) {
     action = json['action'];
     context = json['context'];
     device = json['device'];
@@ -29,24 +29,24 @@ class DidReceiveSettingsEvent {
 }
 
 class Payload {
+  String? controller;
   Coordinates? coordinates;
-  bool? isInMultiAction;
   dynamic settings;
 
-  Payload({this.coordinates, this.isInMultiAction, this.settings});
+  Payload({this.controller, this.coordinates, this.settings});
 
   Payload.fromJson(Map<String, dynamic> json) {
+    controller = json['controller'];
     coordinates = json['coordinates'] != null ? new Coordinates.fromJson(json['coordinates']) : null;
-    isInMultiAction = json['isInMultiAction'];
     settings = json['settings'] != null ? new Settings.fromJson(json['settings']) : null;
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['controller'] = this.controller;
     if (this.coordinates != null) {
       data['coordinates'] = this.coordinates!.toJson();
     }
-    data['isInMultiAction'] = this.isInMultiAction;
     if (this.settings != null) {
       data['settings'] = this.settings!.toJson();
     }
