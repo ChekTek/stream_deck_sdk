@@ -1,66 +1,33 @@
-class DeviceDidConnectEvent {
-  String? device;
-  DeviceInfo? deviceInfo;
-  String? event;
+import 'package:stream_deck_sdk/events/event.dart';
 
-  DeviceDidConnectEvent({this.device, this.deviceInfo, this.event});
-
-  DeviceDidConnectEvent.fromJson(Map<String, dynamic> json) {
+class DeviceDidConnect extends Event {
+  late String device;
+  late _DeviceInfo deviceInfo;
+  DeviceDidConnect.fromJson(Map<String, dynamic> json) {
     device = json['device'];
-    deviceInfo = json['deviceInfo'] != null ? new DeviceInfo.fromJson(json['deviceInfo']) : null;
+    deviceInfo = _DeviceInfo.fromJson(json['deviceInfo']);
     event = json['event'];
   }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['device'] = this.device;
-    if (this.deviceInfo != null) {
-      data['deviceInfo'] = this.deviceInfo!.toJson();
-    }
-    data['event'] = this.event;
-    return data;
-  }
 }
 
-class DeviceInfo {
-  String? name;
-  Size? size;
-  int? type;
+class _DeviceInfo {
+  late String name;
+  late _Size size;
+  late int type;
 
-  DeviceInfo({this.name, this.size, this.type});
-
-  DeviceInfo.fromJson(Map<String, dynamic> json) {
+  _DeviceInfo.fromJson(Map<String, dynamic> json) {
     name = json['name'];
-    size = json['size'] != null ? new Size.fromJson(json['size']) : null;
+    size = _Size.fromJson(json['size']);
     type = json['type'];
   }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['name'] = this.name;
-    if (this.size != null) {
-      data['size'] = this.size!.toJson();
-    }
-    data['type'] = this.type;
-    return data;
-  }
 }
 
-class Size {
-  int? columns;
-  int? rows;
+class _Size {
+  late int columns;
+  late int rows;
 
-  Size({this.columns, this.rows});
-
-  Size.fromJson(Map<String, dynamic> json) {
+  _Size.fromJson(Map<String, dynamic> json) {
     columns = json['columns'];
     rows = json['rows'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['columns'] = this.columns;
-    data['rows'] = this.rows;
-    return data;
   }
 }

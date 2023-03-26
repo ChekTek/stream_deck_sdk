@@ -1,15 +1,7 @@
-class SystemDidWakeUpEvent {
-  String? event;
+import 'package:stream_deck_sdk/events/event.dart';
 
-  SystemDidWakeUpEvent({this.event});
-
+class SystemDidWakeUpEvent extends Event {
   SystemDidWakeUpEvent.fromJson(Map<String, dynamic> json) {
     event = json['event'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['event'] = this.event;
-    return data;
   }
 }

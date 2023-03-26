@@ -32,16 +32,16 @@ class Action {
     EventManager.emit(EventsSent.logMessage, message);
   }
 
-  void onDidReceiveSettings(Function(DidReceiveSettingsEvent event) callback) {
-    EventManager.on<DidReceiveSettingsEvent>('${this._uuid}.${EventsReceived.didReceiveSettings}', callback);
+  void onDidReceiveSettings(Function(DidReceiveSettings event) callback) {
+    EventManager.on<DidReceiveSettings>('${this._uuid}.${EventsReceived.didReceiveSettings}', callback);
   }
 
-  void onKeyDown(Function(KeyDownEvent event) callback) {
-    EventManager.on<KeyDownEvent>('${this._uuid}.${EventsReceived.keyDown}', callback);
+  void onKeyDown(Function(KeyDown event) callback) {
+    EventManager.on<KeyDown>('${this._uuid}.${EventsReceived.keyDown}', callback);
   }
 
-  void onKeyUp(Function(KeyUpEvent event) callback) {
-    EventManager.on<KeyUpEvent>('${this._uuid}.${EventsReceived.keyUp}', callback);
+  void onKeyUp(Function(KeyUp event) callback) {
+    EventManager.on<KeyUp>('${this._uuid}.${EventsReceived.keyUp}', callback);
   }
 
   void onWillAppear(Function(WillAppearEvent event) callback) {
@@ -71,16 +71,16 @@ class Action {
     EventManager.on<SendToPluginEvent>('${this._uuid}.${EventsReceived.sendToPlugin}', callback);
   }
 
-  void onDialRotate(Function(DialRotateEvent event) callback) {
-    EventManager.on<DialRotateEvent>('${this._uuid}.${EventsReceived.dialRotate}', callback);
+  void onDialRotate(Function(DialRotate event) callback) {
+    EventManager.on<DialRotate>('${this._uuid}.${EventsReceived.dialRotate}', callback);
   }
 
-  void onDialDown(Function(DialDownEvent event) callback) {
-    EventManager.on<DialDownEvent>('${this._uuid}.${EventsReceived.dialDown}', callback);
+  void onDialDown(Function(DialDown event) callback) {
+    EventManager.on<DialDown>('${this._uuid}.${EventsReceived.dialDown}', callback);
   }
 
-  void onDialUp(Function(DialUpEvent event) callback) {
-    EventManager.on<DialUpEvent>('${this._uuid}.${EventsReceived.dialDown}', callback);
+  void onDialUp(Function(DialUp event) callback) {
+    EventManager.on<DialUp>('${this._uuid}.${EventsReceived.dialUp}', callback);
   }
 
   void onTouchTap(Function(TouchTapEvent event) callback) {

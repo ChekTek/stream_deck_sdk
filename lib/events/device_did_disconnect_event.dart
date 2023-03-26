@@ -1,18 +1,10 @@
-class DeviceDidDisconnectEvent {
-  String? device;
-  String? event;
+import 'package:stream_deck_sdk/events/event.dart';
 
-  DeviceDidDisconnectEvent({this.device, this.event});
+class DeviceDidDisconnect extends Event {
+  late String device;
 
-  DeviceDidDisconnectEvent.fromJson(Map<String, dynamic> json) {
+  DeviceDidDisconnect.fromJson(Map<String, dynamic> json) {
     device = json['device'];
     event = json['event'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['device'] = this.device;
-    data['event'] = this.event;
-    return data;
   }
 }

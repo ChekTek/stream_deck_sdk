@@ -1,54 +1,18 @@
-class DidReceiveGlobalSettingsEvent {
-  String? event;
-  Payload? payload;
+import 'package:stream_deck_sdk/events/event.dart';
 
-  DidReceiveGlobalSettingsEvent({this.event, this.payload});
+class DidReceiveGlobalSettings extends Event {
+  late _Payload payload;
 
-  DidReceiveGlobalSettingsEvent.fromJson(Map<String, dynamic> json) {
+  DidReceiveGlobalSettings.fromJson(Map<String, dynamic> json) {
     event = json['event'];
-    payload = json['payload'] != null ? new Payload.fromJson(json['payload']) : null;
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['event'] = this.event;
-    if (this.payload != null) {
-      data['payload'] = this.payload!.toJson();
-    }
-    return data;
+    payload = _Payload.fromJson(json['payload']);
   }
 }
 
-class Payload {
+class _Payload {
   dynamic settings;
 
-  Payload({this.settings});
-
-  Payload.fromJson(Map<String, dynamic> json) {
-    settings = json['settings'] != null ? new Settings.fromJson(json['settings']) : null;
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.settings != null) {
-      data['settings'] = this.settings!.toJson();
-    }
-    return data;
-  }
-}
-
-class Settings {
-  String? skill;
-
-  Settings({this.skill});
-
-  Settings.fromJson(Map<String, dynamic> json) {
-    skill = json['skill'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['skill'] = this.skill;
-    return data;
+  _Payload.fromJson(Map<String, dynamic> json) {
+    settings = json['settings'];
   }
 }

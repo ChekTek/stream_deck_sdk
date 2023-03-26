@@ -1,36 +1,18 @@
-class ApplicationDidLaunchEvent {
-  String? event;
-  Payload? payload;
+import 'event.dart';
 
-  ApplicationDidLaunchEvent({this.event, this.payload});
+class ApplicationDidLaunch extends Event {
+  late _Payload payload;
 
-  ApplicationDidLaunchEvent.fromJson(Map<String, dynamic> json) {
+  ApplicationDidLaunch.fromJson(Map<String, dynamic> json) {
     event = json['event'];
-    payload = json['payload'] != null ? new Payload.fromJson(json['payload']) : null;
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['event'] = this.event;
-    if (this.payload != null) {
-      data['payload'] = this.payload!.toJson();
-    }
-    return data;
+    payload = _Payload.fromJson(json['payload']);
   }
 }
 
-class Payload {
-  String? application;
+class _Payload {
+  late String application;
 
-  Payload({this.application});
-
-  Payload.fromJson(Map<String, dynamic> json) {
+  _Payload.fromJson(Map<String, dynamic> json) {
     application = json['application'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['application'] = this.application;
-    return data;
   }
 }

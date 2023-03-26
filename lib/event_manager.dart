@@ -1,5 +1,5 @@
 abstract class EventManager {
-  static final _listeners = new Map<String, Function>();
+  static final _listeners = Map<String, Function>();
 
   static void on<T>(String event, Function(T event) callback) {
     _listeners.addAll({event: callback});

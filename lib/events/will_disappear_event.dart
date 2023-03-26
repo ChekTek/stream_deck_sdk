@@ -12,11 +12,11 @@ class WillDisappearEvent {
     context = json['context'];
     device = json['device'];
     event = json['event'];
-    payload = json['payload'] != null ? new Payload.fromJson(json['payload']) : null;
+    payload = json['payload'] != null ? Payload.fromJson(json['payload']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['action'] = this.action;
     data['context'] = this.context;
     data['device'] = this.device;
@@ -38,13 +38,13 @@ class Payload {
 
   Payload.fromJson(Map<String, dynamic> json) {
     controller = json['controller'];
-    coordinates = json['coordinates'] != null ? new Coordinates.fromJson(json['coordinates']) : null;
+    coordinates = json['coordinates'] != null ? Coordinates.fromJson(json['coordinates']) : null;
     isInMultiAction = json['isInMultiAction'];
-    settings = json['settings'] != null ? new Settings.fromJson(json['settings']) : null;
+    settings = json['settings'] != null ? Settings.fromJson(json['settings']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['controller'] = this.controller;
     if (this.coordinates != null) {
       data['coordinates'] = this.coordinates!.toJson();
@@ -69,7 +69,7 @@ class Coordinates {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['column'] = this.column;
     data['row'] = this.row;
     return data;
@@ -86,7 +86,7 @@ class Settings {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['skill'] = this.skill;
     return data;
   }

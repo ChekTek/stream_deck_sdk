@@ -66,28 +66,28 @@ abstract class API {
         if (message != null) {
           switch (event) {
             case EventsReceived.didReceiveSettings:
-              EventManager.emit<DidReceiveSettingsEvent>(message, DidReceiveSettingsEvent.fromJson(data));
+              EventManager.emit<DidReceiveSettings>(message, DidReceiveSettings.fromJson(data));
               break;
             case EventsReceived.didReceiveGlobalSettings:
-              EventManager.emit<DidReceiveGlobalSettingsEvent>(message, DidReceiveGlobalSettingsEvent.fromJson(data));
+              EventManager.emit<DidReceiveGlobalSettings>(message, DidReceiveGlobalSettings.fromJson(data));
               break;
             case EventsReceived.keyDown:
-              EventManager.emit<KeyDownEvent>(message, KeyDownEvent.fromJson(data));
+              EventManager.emit<KeyDown>(message, KeyDown.fromJson(data));
               break;
             case EventsReceived.keyUp:
-              EventManager.emit<KeyUpEvent>(message, KeyUpEvent.fromJson(data));
+              EventManager.emit<KeyUp>(message, KeyUp.fromJson(data));
               break;
             case EventsReceived.touchTap:
               EventManager.emit<TouchTapEvent>(message, TouchTapEvent.fromJson(data));
               break;
             case EventsReceived.dialDown:
-              EventManager.emit<DialDownEvent>(message, DialDownEvent.fromJson(data));
+              EventManager.emit<DialDown>(message, DialDown.fromJson(data));
               break;
             case EventsReceived.dialUp:
-              EventManager.emit<DialUpEvent>(message, DialUpEvent.fromJson(data));
+              EventManager.emit<DialUp>(message, DialUp.fromJson(data));
               break;
             case EventsReceived.dialRotate:
-              EventManager.emit<DialRotateEvent>(message, DialRotateEvent.fromJson(data));
+              EventManager.emit<DialRotate>(message, DialRotate.fromJson(data));
               break;
             case EventsReceived.willAppear:
               EventManager.emit<WillAppearEvent>(message, WillAppearEvent.fromJson(data));
@@ -99,13 +99,13 @@ abstract class API {
               EventManager.emit<TitleParametersDidChangeEvent>(message, TitleParametersDidChangeEvent.fromJson(data));
               break;
             case EventsReceived.deviceDidConnect:
-              EventManager.emit<DeviceDidConnectEvent>(message, DeviceDidConnectEvent.fromJson(data));
+              EventManager.emit<DeviceDidConnect>(message, DeviceDidConnect.fromJson(data));
               break;
             case EventsReceived.deviceDidDisconnect:
-              EventManager.emit<DeviceDidDisconnectEvent>(message, DeviceDidDisconnectEvent.fromJson(data));
+              EventManager.emit<DeviceDidDisconnect>(message, DeviceDidDisconnect.fromJson(data));
               break;
             case EventsReceived.applicationDidLaunch:
-              EventManager.emit<ApplicationDidLaunchEvent>(message, ApplicationDidLaunchEvent.fromJson(data));
+              EventManager.emit<ApplicationDidLaunch>(message, ApplicationDidLaunch.fromJson(data));
               break;
             case EventsReceived.systemDidWakeUp:
               EventManager.emit<SystemDidWakeUpEvent>(message, SystemDidWakeUpEvent.fromJson(data));

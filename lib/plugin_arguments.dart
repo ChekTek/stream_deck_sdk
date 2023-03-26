@@ -77,7 +77,7 @@ class Devices {
   Devices.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
-    size = json['size'] != null ? new Size.fromJson(json['size']) : null;
+    size = json['size'] != null ? Size.fromJson(json['size']) : null;
     type = json['type'];
   }
 }
@@ -116,8 +116,8 @@ class Info {
   Info({this.application, this.colors, this.devicePixelRatio, this.devices, this.plugin});
 
   Info.fromJson(Map<String, dynamic> json) {
-    application = json['application'] != null ? new Application.fromJson(json['application']) : null;
-    colors = json['colors'] != null ? new Colors.fromJson(json['colors']) : null;
+    application = json['application'] != null ? Application.fromJson(json['application']) : null;
+    colors = json['colors'] != null ? Colors.fromJson(json['colors']) : null;
     devicePixelRatio = json['devicePixelRatio'];
     if (json['devices'] != null) {
       devices = <Devices>[];
@@ -125,6 +125,6 @@ class Info {
         devices!.add(new Devices.fromJson(v));
       });
     }
-    plugin = json['plugin'] != null ? new PluginInfo.fromJson(json['plugin']) : null;
+    plugin = json['plugin'] != null ? PluginInfo.fromJson(json['plugin']) : null;
   }
 }

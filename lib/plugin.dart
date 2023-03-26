@@ -1,3 +1,9 @@
+import 'package:stream_deck_sdk/events/application_did_launch_event.dart';
+import 'package:stream_deck_sdk/events/application_did_terminate_event.dart';
+import 'package:stream_deck_sdk/events/device_did_connect_event.dart';
+import 'package:stream_deck_sdk/events/device_did_disconnect_event.dart';
+import 'package:stream_deck_sdk/events/system_did_wake_up_event.dart';
+
 import 'api.dart';
 import 'events.dart';
 import 'event_manager.dart';
@@ -47,24 +53,24 @@ class Plugin extends API {
     this.send(context, EventsSent.setFeedbackLayout, layout);
   }
 
-  void onDeviceDidConnect(Function(dynamic event) callback) {
-    EventManager.on(EventsReceived.deviceDidConnect, callback);
+  void onDeviceDidConnect(Function(DeviceDidConnect event) callback) {
+    EventManager.on<DeviceDidConnect>(EventsReceived.deviceDidConnect, callback);
   }
 
-  void onDeviceDidDisconnect(Function(dynamic event) callback) {
-    EventManager.on(EventsReceived.deviceDidDisconnect, callback);
+  void onDeviceDidDisconnect(Function(DeviceDidDisconnect event) callback) {
+    EventManager.on<DeviceDidDisconnect>(EventsReceived.deviceDidDisconnect, callback);
   }
 
-  void onApplicationDidLaunch(Function(dynamic event) callback) {
-    EventManager.on(EventsReceived.applicationDidLaunch, callback);
+  void onApplicationDidLaunch(Function(ApplicationDidLaunch event) callback) {
+    EventManager.on<ApplicationDidLaunch>(EventsReceived.applicationDidLaunch, callback);
   }
 
-  void onApplicationDidTerminate(Function(dynamic event) callback) {
-    EventManager.on(EventsReceived.applicationDidTerminate, callback);
+  void onApplicationDidTerminate(Function(ApplicationDidTerminate event) callback) {
+    EventManager.on<ApplicationDidTerminate>(EventsReceived.applicationDidTerminate, callback);
   }
 
-  void onSystemDidWakeUp(Function(dynamic event) callback) {
-    EventManager.on(EventsReceived.systemDidWakeUp, callback);
+  void onSystemDidWakeUp(Function(SystemDidWakeUpEvent event) callback) {
+    EventManager.on<SystemDidWakeUpEvent>(EventsReceived.systemDidWakeUp, callback);
   }
 
   void switchToProfile(String context, String device, String profile) {

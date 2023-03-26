@@ -1,36 +1,18 @@
-class ApplicationDidTerminateEvent {
-  String? event;
-  Payload? payload;
+import 'package:stream_deck_sdk/events/event.dart';
 
-  ApplicationDidTerminateEvent({this.event, this.payload});
+class ApplicationDidTerminate extends Event {
+  late _Payload payload;
 
-  ApplicationDidTerminateEvent.fromJson(Map<String, dynamic> json) {
+  ApplicationDidTerminate.fromJson(Map<String, dynamic> json) {
     event = json['event'];
-    payload = json['payload'] != null ? new Payload.fromJson(json['payload']) : null;
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['event'] = this.event;
-    if (this.payload != null) {
-      data['payload'] = this.payload!.toJson();
-    }
-    return data;
+    payload = _Payload.fromJson(json['payload']);
   }
 }
 
-class Payload {
-  String? application;
+class _Payload {
+  late String application;
 
-  Payload({this.application});
-
-  Payload.fromJson(Map<String, dynamic> json) {
+  _Payload.fromJson(Map<String, dynamic> json) {
     application = json['application'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['application'] = this.application;
-    return data;
   }
 }
