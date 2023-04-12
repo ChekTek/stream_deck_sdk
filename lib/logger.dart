@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'event_manager.dart';
 import 'events.dart';
@@ -7,9 +8,13 @@ enum LogLevel { debug, log, warn, error }
 
 abstract class Logger {
   static LogLevel logLevel = LogLevel.log;
+  static WebSocket? websocket;
 
   static _send(String message) {
     EventManager.emit(EventsSent.logMessage, message);
+    if (websocket != null) {
+      websocket!.add(message);
+    }
   }
 
   static debug(dynamic message) {
@@ -20,7 +25,7 @@ abstract class Logger {
     }
   }
 
-  static log(dynamic message) {
+  static info(dynamic message) {
     if (logLevel.index <= LogLevel.log.index) {
       _send(jsonEncode(message));
     }

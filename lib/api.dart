@@ -38,7 +38,7 @@ abstract class API {
     this._info = arguments.info;
 
     if (_websocket != null) {
-      this._websocket?.close();
+      this._websocket!.close();
       this._websocket = null;
     }
 
@@ -46,8 +46,8 @@ abstract class API {
 
     this._websocket!.add(jsonEncode({"uuid": this.uuid, "event": "registerPlugin"}));
 
-    EventManager.on(EventsSent.logMessage, (message) {
-      this.logMessage(message as String);
+    EventManager.on<String>(EventsSent.logMessage, (message) {
+      this.logMessage(message);
     });
 
     EventManager.emit(EventsReceived.connected, {
@@ -55,79 +55,84 @@ abstract class API {
       "info": this._info,
     });
 
-    this._websocket!.listen((socketEvent) {
-      var data = jsonDecode(socketEvent);
-      Logger.debug(data);
-      if (data != null) {
-        var action = data['action'];
-        var event = data['event'];
-        var message = action != null ? '${action}.${event}' : event;
+    this._websocket!.listen(
+      (socketEvent) {
+        var data = jsonDecode(socketEvent);
+        Logger.debug(data);
+        if (data != null) {
+          var action = data['action'];
+          var event = data['event'];
+          var message = action != null ? '${action}.${event}' : event;
 
-        if (message != null) {
-          switch (event) {
-            case EventsReceived.didReceiveSettings:
-              EventManager.emit<DidReceiveSettings>(message, DidReceiveSettings.fromJson(data));
-              break;
-            case EventsReceived.didReceiveGlobalSettings:
-              EventManager.emit<DidReceiveGlobalSettings>(message, DidReceiveGlobalSettings.fromJson(data));
-              break;
-            case EventsReceived.keyDown:
-              EventManager.emit<KeyDown>(message, KeyDown.fromJson(data));
-              break;
-            case EventsReceived.keyUp:
-              EventManager.emit<KeyUp>(message, KeyUp.fromJson(data));
-              break;
-            case EventsReceived.touchTap:
-              EventManager.emit<TouchTap>(message, TouchTap.fromJson(data));
-              break;
-            case EventsReceived.dialDown:
-              EventManager.emit<DialDown>(message, DialDown.fromJson(data));
-              break;
-            case EventsReceived.dialUp:
-              EventManager.emit<DialUp>(message, DialUp.fromJson(data));
-              break;
-            case EventsReceived.dialRotate:
-              EventManager.emit<DialRotate>(message, DialRotate.fromJson(data));
-              break;
-            case EventsReceived.willAppear:
-              EventManager.emit<WillAppear>(message, WillAppear.fromJson(data));
-              break;
-            case EventsReceived.willDisappear:
-              EventManager.emit<WillDisappear>(message, WillDisappear.fromJson(data));
-              break;
-            case EventsReceived.titleParametersDidChange:
-              EventManager.emit<TitleParametersDidChange>(message, TitleParametersDidChange.fromJson(data));
-              break;
-            case EventsReceived.deviceDidConnect:
-              EventManager.emit<DeviceDidConnect>(message, DeviceDidConnect.fromJson(data));
-              break;
-            case EventsReceived.deviceDidDisconnect:
-              EventManager.emit<DeviceDidDisconnect>(message, DeviceDidDisconnect.fromJson(data));
-              break;
-            case EventsReceived.applicationDidLaunch:
-              EventManager.emit<ApplicationDidLaunch>(message, ApplicationDidLaunch.fromJson(data));
-              break;
-            case EventsReceived.systemDidWakeUp:
-              EventManager.emit<SystemDidWakeUp>(message, SystemDidWakeUp.fromJson(data));
-              break;
-            case EventsReceived.propertyInspectorDidAppear:
-              EventManager.emit<PropertyInspectorDidAppear>(message, PropertyInspectorDidAppear.fromJson(data));
-              break;
-            case EventsReceived.propertyInspectorDidDisappear:
-              EventManager.emit<PropertyInspectorDidDisappear>(message, PropertyInspectorDidDisappear.fromJson(data));
-              break;
-            case EventsReceived.sendToPlugin:
-              EventManager.emit<SendToPlugin>(message, SendToPlugin.fromJson(data));
-              break;
-            case EventsReceived.sendToPropertyInspector:
-              EventManager.emit<SendToPropertyInspector>(message, SendToPropertyInspector.fromJson(data));
-              break;
-            default:
-              EventManager.emit(message, data);
+          if (message != null) {
+            switch (event) {
+              case EventsReceived.didReceiveSettings:
+                EventManager.emit<DidReceiveSettings>(message, DidReceiveSettings.fromJson(data));
+                break;
+              case EventsReceived.didReceiveGlobalSettings:
+                EventManager.emit<DidReceiveGlobalSettings>(message, DidReceiveGlobalSettings.fromJson(data));
+                break;
+              case EventsReceived.keyDown:
+                EventManager.emit<KeyDown>(message, KeyDown.fromJson(data));
+                break;
+              case EventsReceived.keyUp:
+                EventManager.emit<KeyUp>(message, KeyUp.fromJson(data));
+                break;
+              case EventsReceived.touchTap:
+                EventManager.emit<TouchTap>(message, TouchTap.fromJson(data));
+                break;
+              case EventsReceived.dialDown:
+                EventManager.emit<DialDown>(message, DialDown.fromJson(data));
+                break;
+              case EventsReceived.dialUp:
+                EventManager.emit<DialUp>(message, DialUp.fromJson(data));
+                break;
+              case EventsReceived.dialRotate:
+                EventManager.emit<DialRotate>(message, DialRotate.fromJson(data));
+                break;
+              case EventsReceived.willAppear:
+                EventManager.emit<WillAppear>(message, WillAppear.fromJson(data));
+                break;
+              case EventsReceived.willDisappear:
+                EventManager.emit<WillDisappear>(message, WillDisappear.fromJson(data));
+                break;
+              case EventsReceived.titleParametersDidChange:
+                EventManager.emit<TitleParametersDidChange>(message, TitleParametersDidChange.fromJson(data));
+                break;
+              case EventsReceived.deviceDidConnect:
+                EventManager.emit<DeviceDidConnect>(message, DeviceDidConnect.fromJson(data));
+                break;
+              case EventsReceived.deviceDidDisconnect:
+                EventManager.emit<DeviceDidDisconnect>(message, DeviceDidDisconnect.fromJson(data));
+                break;
+              case EventsReceived.applicationDidLaunch:
+                EventManager.emit<ApplicationDidLaunch>(message, ApplicationDidLaunch.fromJson(data));
+                break;
+              case EventsReceived.systemDidWakeUp:
+                EventManager.emit<SystemDidWakeUp>(message, SystemDidWakeUp.fromJson(data));
+                break;
+              case EventsReceived.propertyInspectorDidAppear:
+                EventManager.emit<PropertyInspectorDidAppear>(message, PropertyInspectorDidAppear.fromJson(data));
+                break;
+              case EventsReceived.propertyInspectorDidDisappear:
+                EventManager.emit<PropertyInspectorDidDisappear>(message, PropertyInspectorDidDisappear.fromJson(data));
+                break;
+              case EventsReceived.sendToPlugin:
+                EventManager.emit<SendToPlugin>(message, SendToPlugin.fromJson(data));
+                break;
+              case EventsReceived.sendToPropertyInspector:
+                EventManager.emit<SendToPropertyInspector>(message, SendToPropertyInspector.fromJson(data));
+                break;
+              default:
+                EventManager.emit(message, data);
+            }
           }
         }
-      }
-    });
+      },
+      onDone: () {
+        exit(1);
+      },
+    );
   }
 
   void send(String context, String event, [dynamic payload]) {

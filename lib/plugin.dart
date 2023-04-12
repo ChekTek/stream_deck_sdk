@@ -29,8 +29,8 @@ class Plugin extends API {
     this.send(context, EventsSent.setState, state);
   }
 
-  void setTitle(String context, String title) {
-    this.send(context, EventsSent.setTitle, title);
+  void setTitle(String context, String title, {int target = 0}) {
+    this.send(context, EventsSent.setTitle, {'title': title, 'target': target});
   }
 
   void clearTitle(String context) {
@@ -41,8 +41,8 @@ class Plugin extends API {
     this.send(context, EventsSent.sendToPropertyInspector, payload);
   }
 
-  void setImage(String context, String image) {
-    this.send(context, EventsSent.setImage, image);
+  void setImage(String context, String image, {int target = 0, int state = 0}) {
+    this.send(context, EventsSent.setImage, {'image': image, 'target': target, 'state': state});
   }
 
   void setFeedback(String context, String feedback) {

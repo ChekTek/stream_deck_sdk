@@ -13,7 +13,11 @@ class PluginArguments {
     required this.info,
   });
 
-  factory PluginArguments.fromExecutableArgumentsList(List<String> arguments) {
+  factory PluginArguments.fromExecutableArgumentsList(List<String>? arguments) {
+    if (arguments == null || arguments.length < 4) {
+      return PluginArguments(port: 8080, pluginUuid: 'test', registerEvent: 'registerEvent', info: Info());
+    }
+
     return PluginArguments(
         port: int.parse(arguments[arguments.indexOf('-port') + 1]),
         pluginUuid: arguments[arguments.indexOf('-pluginUUID') + 1],
