@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:stream_deck_sdk/events/application_did_launch.dart';
+import 'package:stream_deck_sdk/events/application_did_terminate.dart';
 import 'package:stream_deck_sdk/events/device_did_connect.dart';
 import 'package:stream_deck_sdk/events/device_did_disconnect.dart';
 import 'package:stream_deck_sdk/events/dial_down.dart';
@@ -107,6 +108,9 @@ abstract class API {
                 break;
               case EventsReceived.applicationDidLaunch:
                 EventManager.emit<ApplicationDidLaunch>(message, ApplicationDidLaunch.fromJson(data));
+                break;
+              case EventsReceived.applicationDidTerminate:
+                EventManager.emit<ApplicationDidTerminate>(message, ApplicationDidTerminate.fromJson(data));
                 break;
               case EventsReceived.systemDidWakeUp:
                 EventManager.emit<SystemDidWakeUp>(message, SystemDidWakeUp.fromJson(data));
