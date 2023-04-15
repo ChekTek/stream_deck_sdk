@@ -23,9 +23,8 @@ import 'package:stream_deck_sdk/events/will_disappear.dart';
 
 import 'event_manager.dart';
 import 'events.dart';
-import 'plugin_arguments.dart';
-import 'logger.dart';
 import 'events/did_receive_settings.dart';
+import 'plugin_arguments.dart';
 
 abstract class API {
   int? _port;
@@ -59,7 +58,6 @@ abstract class API {
     this._websocket!.listen(
       (socketEvent) {
         var data = jsonDecode(socketEvent);
-        Logger.debug(data);
         if (data != null) {
           var action = data['action'];
           var event = data['event'];
