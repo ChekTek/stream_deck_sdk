@@ -19,27 +19,48 @@ abstract class Logger {
 
   static debug(dynamic message) {
     if (logLevel.index <= LogLevel.debug.index) {
-      final String debugMessage = 'DEBUG: ${jsonEncode(message)}';
+      String debugMessage;
+      try {
+        debugMessage = 'DEBUG: ${jsonEncode(message)}';
+      } catch (e) {
+        debugMessage = 'DEBUG: ${message.toString()}';
+      }
       _send(debugMessage);
-      print(debugMessage);
     }
   }
 
   static info(dynamic message) {
     if (logLevel.index <= LogLevel.log.index) {
-      _send(jsonEncode(message));
+      String infoMessage;
+      try {
+        infoMessage = 'INFO: ${jsonEncode(message)}';
+      } catch (e) {
+        infoMessage = 'INFO: ${message.toString()}';
+      }
+      _send(infoMessage);
     }
   }
 
   static warn(dynamic message) {
     if (logLevel.index <= LogLevel.warn.index) {
-      _send('WARN: ${jsonEncode(message)}');
+      String warnMessage;
+      try {
+        warnMessage = 'WARN: ${jsonEncode(message)}';
+      } catch (e) {
+        warnMessage = 'WARN: ${message.toString()}';
+      }
+      _send(warnMessage);
     }
   }
 
   static error(dynamic message) {
     if (logLevel.index <= LogLevel.error.index) {
-      final String errorMessage = 'ERROR: ${jsonEncode(message)}';
+      String errorMessage;
+      try {
+        errorMessage = 'ERROR: ${jsonEncode(message)}';
+      } catch (e) {
+        errorMessage = 'ERROR: ${message.toString()}';
+      }
       _send(errorMessage);
       print(errorMessage);
     }
