@@ -26,7 +26,7 @@ class Plugin extends API {
   }
 
   void setState(String context, int state) {
-    this.send(context, EventsSent.setState, state);
+    this.send(context, EventsSent.setState, {'state': state});
   }
 
   void setTitle(String context, String title, {int target = 0}) {
