@@ -1,8 +1,12 @@
 name: stream_deck_sdk
 description: A Dart package for building Elgato Stream Deck plugins.
-version: 0.0.2
+version: 0.0.3
 repository: https://github.com/ChekTek/streamdeck_dart_sdk
 issue_tracker: https://github.com/ChekTek/streamdeck_dart_sdk/issues
 
 environment:
     sdk: '>=2.18.0 <3.0.0'
+
+platforms:
+    macos:
+    windows:
