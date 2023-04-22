@@ -1,4 +1,4 @@
-import 'package:stream_deck_sdk/events/event.dart';
+import 'event.dart';
 
 class ApplicationDidTerminate extends Event {
   late _Payload payload;

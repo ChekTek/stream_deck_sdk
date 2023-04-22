@@ -1,6 +1,6 @@
-import 'src/api.dart';
-import 'src/events.dart';
-import 'src/event_manager.dart';
+import 'api.dart';
+import 'events.dart';
+import 'event_manager.dart';
 
 class Inspector extends API {
   void onSendToPropertyInspector(Function(dynamic event) callback) {

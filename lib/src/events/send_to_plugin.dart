@@ -1,4 +1,4 @@
-import 'package:stream_deck_sdk/events/event.dart';
+import 'event.dart';
 
 class SendToPlugin extends ContextEvent {
   dynamic payload;

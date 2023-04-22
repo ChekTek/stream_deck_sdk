@@ -1,9 +1,9 @@
-import 'package:stream_deck_sdk/events/event.dart';
+import 'event.dart';
 
-class DialRotate extends DeviceEvent {
+class TouchTap extends DeviceEvent {
   late _Payload payload;
 
-  DialRotate.fromJson(Map<String, dynamic> json) {
+  TouchTap.fromJson(Map<String, dynamic> json) {
     action = json['action'];
     context = json['context'];
     device = json['device'];
@@ -13,14 +13,14 @@ class DialRotate extends DeviceEvent {
 }
 
 class _Payload extends ContextPayload {
-  late bool pressed;
-  late int ticks;
+  late bool? hold;
+  late List<int>? tapPos;
 
   _Payload.fromJson(Map<String, dynamic> json) {
     controller = json['controller'];
     coordinates = Coordinates.fromJson(json['coordinates']);
-    pressed = json['pressed'];
+    hold = json['hold'];
     settings = json['settings'];
-    ticks = json['ticks'];
+    tapPos = json['tapPos'].cast<int>();
   }
 }

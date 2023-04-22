@@ -1,9 +1,9 @@
-import 'package:stream_deck_sdk/events/event.dart';
+import 'event.dart';
 
-class KeyDown extends DeviceEvent {
+class DialUp extends DeviceEvent {
   late _Payload payload;
 
-  KeyDown.fromJson(Map<String, dynamic> json) {
+  DialUp.fromJson(Map<String, dynamic> json) {
     action = json['action'];
     context = json['context'];
     device = json['device'];
@@ -13,13 +13,9 @@ class KeyDown extends DeviceEvent {
 }
 
 class _Payload extends ContextPayload {
-  int? state;
-  late bool isInMultiAction;
-
   _Payload.fromJson(Map<String, dynamic> json) {
+    controller = json['controller'];
     coordinates = Coordinates.fromJson(json['coordinates']);
-    isInMultiAction = json['isInMultiAction'];
-    state = json['state'];
     settings = json['settings'];
   }
 }

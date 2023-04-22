@@ -1,15 +1,15 @@
-import 'package:stream_deck_sdk/events/dial_down.dart';
-import 'package:stream_deck_sdk/events/dial_rotate.dart';
-import 'package:stream_deck_sdk/events/dial_up.dart';
-import 'package:stream_deck_sdk/events/key_down.dart';
-import 'package:stream_deck_sdk/events/key_up.dart';
-import 'package:stream_deck_sdk/events/property_inspector_did_appear.dart';
-import 'package:stream_deck_sdk/events/property_inspector_did_disappear.dart';
-import 'package:stream_deck_sdk/events/send_to_plugin.dart';
-import 'package:stream_deck_sdk/events/title_parameters_did_change.dart';
-import 'package:stream_deck_sdk/events/touch_tap.dart';
-import 'package:stream_deck_sdk/events/will_appear.dart';
-import 'package:stream_deck_sdk/events/will_disappear.dart';
+import 'events/dial_down.dart';
+import 'events/dial_rotate.dart';
+import 'events/dial_up.dart';
+import 'events/key_down.dart';
+import 'events/key_up.dart';
+import 'events/property_inspector_did_appear.dart';
+import 'events/property_inspector_did_disappear.dart';
+import 'events/send_to_plugin.dart';
+import 'events/title_parameters_did_change.dart';
+import 'events/touch_tap.dart';
+import 'events/will_appear.dart';
+import 'events/will_disappear.dart';
 
 import 'event_manager.dart';
 import 'events.dart';
@@ -53,13 +53,11 @@ class Action {
   }
 
   void onTitleParametersDidChange(Function(TitleParametersDidChange event) callback) {
-    EventManager.on<TitleParametersDidChange>(
-        '${this._uuid}.${EventsReceived.titleParametersDidChange}', callback);
+    EventManager.on<TitleParametersDidChange>('${this._uuid}.${EventsReceived.titleParametersDidChange}', callback);
   }
 
   void onPropertyInspectorDidAppear(Function(PropertyInspectorDidAppear event) callback) {
-    EventManager.on<PropertyInspectorDidAppear>(
-        '${this._uuid}.${EventsReceived.propertyInspectorDidAppear}', callback);
+    EventManager.on<PropertyInspectorDidAppear>('${this._uuid}.${EventsReceived.propertyInspectorDidAppear}', callback);
   }
 
   void onPropertyInspectorDidDisappear(Function(PropertyInspectorDidDisappear event) callback) {

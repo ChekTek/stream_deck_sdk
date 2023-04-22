@@ -1,12 +1,11 @@
-import 'package:stream_deck_sdk/events/application_did_launch.dart';
-import 'package:stream_deck_sdk/events/application_did_terminate.dart';
-import 'package:stream_deck_sdk/events/device_did_connect.dart';
-import 'package:stream_deck_sdk/events/device_did_disconnect.dart';
-import 'package:stream_deck_sdk/events/system_did_wake_up.dart';
-
 import 'api.dart';
-import 'events.dart';
 import 'event_manager.dart';
+import 'events.dart';
+import 'events/application_did_launch.dart';
+import 'events/application_did_terminate.dart';
+import 'events/device_did_connect.dart';
+import 'events/device_did_disconnect.dart';
+import 'events/system_did_wake_up.dart';
 
 class Plugin extends API {
   void showAlert(String context) {
