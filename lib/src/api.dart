@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:io';
-
 import 'events/application_did_launch.dart';
 import 'events/application_did_terminate.dart';
 import 'events/device_did_connect.dart';
@@ -20,7 +19,6 @@ import 'events/title_parameters_did_change.dart';
 import 'events/touch_tap.dart';
 import 'events/will_appear.dart';
 import 'events/will_disappear.dart';
-
 import 'event_manager.dart';
 import 'events.dart';
 import 'events/did_receive_settings.dart';
@@ -44,7 +42,9 @@ abstract class API {
 
     this._websocket = await WebSocket.connect('ws://127.0.0.1:$_port');
 
-    this._websocket!.add(jsonEncode({"uuid": this.uuid, "event": "registerPlugin"}));
+    this
+        ._websocket!
+        .add(jsonEncode({"uuid": this.uuid, "event": "registerPlugin"}));
 
     EventManager.on<String>(EventsSent.logMessage, (message) {
       this.logMessage(message);
@@ -66,10 +66,12 @@ abstract class API {
           if (message != null) {
             switch (event) {
               case EventsReceived.didReceiveSettings:
-                EventManager.emit<DidReceiveSettings>(message, DidReceiveSettings.fromJson(data));
+                EventManager.emit<DidReceiveSettings>(
+                    message, DidReceiveSettings.fromJson(data));
                 break;
               case EventsReceived.didReceiveGlobalSettings:
-                EventManager.emit<DidReceiveGlobalSettings>(message, DidReceiveGlobalSettings.fromJson(data));
+                EventManager.emit<DidReceiveGlobalSettings>(
+                    message, DidReceiveGlobalSettings.fromJson(data));
                 break;
               case EventsReceived.keyDown:
                 EventManager.emit<KeyDown>(message, KeyDown.fromJson(data));
@@ -87,43 +89,56 @@ abstract class API {
                 EventManager.emit<DialUp>(message, DialUp.fromJson(data));
                 break;
               case EventsReceived.dialRotate:
-                EventManager.emit<DialRotate>(message, DialRotate.fromJson(data));
+                EventManager.emit<DialRotate>(
+                    message, DialRotate.fromJson(data));
                 break;
               case EventsReceived.willAppear:
-                EventManager.emit<WillAppear>(message, WillAppear.fromJson(data));
+                EventManager.emit<WillAppear>(
+                    message, WillAppear.fromJson(data));
                 break;
               case EventsReceived.willDisappear:
-                EventManager.emit<WillDisappear>(message, WillDisappear.fromJson(data));
+                EventManager.emit<WillDisappear>(
+                    message, WillDisappear.fromJson(data));
                 break;
               case EventsReceived.titleParametersDidChange:
-                EventManager.emit<TitleParametersDidChange>(message, TitleParametersDidChange.fromJson(data));
+                EventManager.emit<TitleParametersDidChange>(
+                    message, TitleParametersDidChange.fromJson(data));
                 break;
               case EventsReceived.deviceDidConnect:
-                EventManager.emit<DeviceDidConnect>(message, DeviceDidConnect.fromJson(data));
+                EventManager.emit<DeviceDidConnect>(
+                    message, DeviceDidConnect.fromJson(data));
                 break;
               case EventsReceived.deviceDidDisconnect:
-                EventManager.emit<DeviceDidDisconnect>(message, DeviceDidDisconnect.fromJson(data));
+                EventManager.emit<DeviceDidDisconnect>(
+                    message, DeviceDidDisconnect.fromJson(data));
                 break;
               case EventsReceived.applicationDidLaunch:
-                EventManager.emit<ApplicationDidLaunch>(message, ApplicationDidLaunch.fromJson(data));
+                EventManager.emit<ApplicationDidLaunch>(
+                    message, ApplicationDidLaunch.fromJson(data));
                 break;
               case EventsReceived.applicationDidTerminate:
-                EventManager.emit<ApplicationDidTerminate>(message, ApplicationDidTerminate.fromJson(data));
+                EventManager.emit<ApplicationDidTerminate>(
+                    message, ApplicationDidTerminate.fromJson(data));
                 break;
               case EventsReceived.systemDidWakeUp:
-                EventManager.emit<SystemDidWakeUp>(message, SystemDidWakeUp.fromJson(data));
+                EventManager.emit<SystemDidWakeUp>(
+                    message, SystemDidWakeUp.fromJson(data));
                 break;
               case EventsReceived.propertyInspectorDidAppear:
-                EventManager.emit<PropertyInspectorDidAppear>(message, PropertyInspectorDidAppear.fromJson(data));
+                EventManager.emit<PropertyInspectorDidAppear>(
+                    message, PropertyInspectorDidAppear.fromJson(data));
                 break;
               case EventsReceived.propertyInspectorDidDisappear:
-                EventManager.emit<PropertyInspectorDidDisappear>(message, PropertyInspectorDidDisappear.fromJson(data));
+                EventManager.emit<PropertyInspectorDidDisappear>(
+                    message, PropertyInspectorDidDisappear.fromJson(data));
                 break;
               case EventsReceived.sendToPlugin:
-                EventManager.emit<SendToPlugin>(message, SendToPlugin.fromJson(data));
+                EventManager.emit<SendToPlugin>(
+                    message, SendToPlugin.fromJson(data));
                 break;
               case EventsReceived.sendToPropertyInspector:
-                EventManager.emit<SendToPropertyInspector>(message, SendToPropertyInspector.fromJson(data));
+                EventManager.emit<SendToPropertyInspector>(
+                    message, SendToPropertyInspector.fromJson(data));
                 break;
               default:
                 EventManager.emit(message, data);

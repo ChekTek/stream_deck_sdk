@@ -8,7 +8,8 @@ class KeyUp extends DeviceEvent {
     context = json['context'];
     device = json['device'];
     event = json['event'];
-    payload = json['payload'] != null ? _Payload.fromJson(json['payload']) : null;
+    payload =
+        json['payload'] != null ? _Payload.fromJson(json['payload']) : null;
   }
 }
 

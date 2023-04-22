@@ -33,11 +33,13 @@ class Action {
   }
 
   void onDidReceiveSettings(Function(DidReceiveSettings event) callback) {
-    EventManager.on<DidReceiveSettings>('${this._uuid}.${EventsReceived.didReceiveSettings}', callback);
+    EventManager.on<DidReceiveSettings>(
+        '${this._uuid}.${EventsReceived.didReceiveSettings}', callback);
   }
 
   void onKeyDown(Function(KeyDown event) callback) {
-    EventManager.on<KeyDown>('${this._uuid}.${EventsReceived.keyDown}', callback);
+    EventManager.on<KeyDown>(
+        '${this._uuid}.${EventsReceived.keyDown}', callback);
   }
 
   void onKeyUp(Function(KeyUp event) callback) {
@@ -45,36 +47,47 @@ class Action {
   }
 
   void onWillAppear(Function(WillAppear event) callback) {
-    EventManager.on<WillAppear>('${this._uuid}.${EventsReceived.willAppear}', callback);
+    EventManager.on<WillAppear>(
+        '${this._uuid}.${EventsReceived.willAppear}', callback);
   }
 
   void onWillDisappear(Function(WillDisappear event) callback) {
-    EventManager.on<WillDisappear>('${this._uuid}.${EventsReceived.willDisappear}', callback);
+    EventManager.on<WillDisappear>(
+        '${this._uuid}.${EventsReceived.willDisappear}', callback);
   }
 
-  void onTitleParametersDidChange(Function(TitleParametersDidChange event) callback) {
-    EventManager.on<TitleParametersDidChange>('${this._uuid}.${EventsReceived.titleParametersDidChange}', callback);
+  void onTitleParametersDidChange(
+      Function(TitleParametersDidChange event) callback) {
+    EventManager.on<TitleParametersDidChange>(
+        '${this._uuid}.${EventsReceived.titleParametersDidChange}', callback);
   }
 
-  void onPropertyInspectorDidAppear(Function(PropertyInspectorDidAppear event) callback) {
-    EventManager.on<PropertyInspectorDidAppear>('${this._uuid}.${EventsReceived.propertyInspectorDidAppear}', callback);
+  void onPropertyInspectorDidAppear(
+      Function(PropertyInspectorDidAppear event) callback) {
+    EventManager.on<PropertyInspectorDidAppear>(
+        '${this._uuid}.${EventsReceived.propertyInspectorDidAppear}', callback);
   }
 
-  void onPropertyInspectorDidDisappear(Function(PropertyInspectorDidDisappear event) callback) {
+  void onPropertyInspectorDidDisappear(
+      Function(PropertyInspectorDidDisappear event) callback) {
     EventManager.on<PropertyInspectorDidDisappear>(
-        '${this._uuid}.${EventsReceived.propertyInspectorDidDisappear}', callback);
+        '${this._uuid}.${EventsReceived.propertyInspectorDidDisappear}',
+        callback);
   }
 
   void onSendToPlugin(Function(SendToPlugin event) callback) {
-    EventManager.on<SendToPlugin>('${this._uuid}.${EventsReceived.sendToPlugin}', callback);
+    EventManager.on<SendToPlugin>(
+        '${this._uuid}.${EventsReceived.sendToPlugin}', callback);
   }
 
   void onDialRotate(Function(DialRotate event) callback) {
-    EventManager.on<DialRotate>('${this._uuid}.${EventsReceived.dialRotate}', callback);
+    EventManager.on<DialRotate>(
+        '${this._uuid}.${EventsReceived.dialRotate}', callback);
   }
 
   void onDialDown(Function(DialDown event) callback) {
-    EventManager.on<DialDown>('${this._uuid}.${EventsReceived.dialDown}', callback);
+    EventManager.on<DialDown>(
+        '${this._uuid}.${EventsReceived.dialDown}', callback);
   }
 
   void onDialUp(Function(DialUp event) callback) {
@@ -82,6 +95,7 @@ class Action {
   }
 
   void onTouchTap(Function(TouchTap event) callback) {
-    EventManager.on<TouchTap>('${this._uuid}.${EventsReceived.touchTap}', callback);
+    EventManager.on<TouchTap>(
+        '${this._uuid}.${EventsReceived.touchTap}', callback);
   }
 }

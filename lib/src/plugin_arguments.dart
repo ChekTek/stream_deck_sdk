@@ -15,14 +15,19 @@ class PluginArguments {
 
   factory PluginArguments.fromExecutableArgumentsList(List<String>? arguments) {
     if (arguments == null || arguments.length < 4) {
-      return PluginArguments(port: 8080, pluginUuid: 'test', registerEvent: 'registerEvent', info: Info());
+      return PluginArguments(
+          port: 8080,
+          pluginUuid: 'test',
+          registerEvent: 'registerEvent',
+          info: Info());
     }
 
     return PluginArguments(
         port: int.parse(arguments[arguments.indexOf('-port') + 1]),
         pluginUuid: arguments[arguments.indexOf('-pluginUUID') + 1],
         registerEvent: arguments[arguments.indexOf('-registerEvent') + 1],
-        info: Info.fromJson(jsonDecode(arguments[arguments.indexOf('-info') + 1])));
+        info: Info.fromJson(
+            jsonDecode(arguments[arguments.indexOf('-info') + 1])));
   }
 }
 
@@ -33,7 +38,12 @@ class Application {
   String? platformVersion;
   String? version;
 
-  Application({this.font, this.language, this.platform, this.platformVersion, this.version});
+  Application(
+      {this.font,
+      this.language,
+      this.platform,
+      this.platformVersion,
+      this.version});
 
   Application.fromJson(Map<String, dynamic> json) {
     font = json['font'];
@@ -117,10 +127,17 @@ class Info {
   List<Devices>? devices;
   PluginInfo? plugin;
 
-  Info({this.application, this.colors, this.devicePixelRatio, this.devices, this.plugin});
+  Info(
+      {this.application,
+      this.colors,
+      this.devicePixelRatio,
+      this.devices,
+      this.plugin});
 
   Info.fromJson(Map<String, dynamic> json) {
-    application = json['application'] != null ? Application.fromJson(json['application']) : null;
+    application = json['application'] != null
+        ? Application.fromJson(json['application'])
+        : null;
     colors = json['colors'] != null ? Colors.fromJson(json['colors']) : null;
     devicePixelRatio = json['devicePixelRatio'];
     if (json['devices'] != null) {
@@ -129,6 +146,7 @@ class Info {
         devices!.add(new Devices.fromJson(v));
       });
     }
-    plugin = json['plugin'] != null ? PluginInfo.fromJson(json['plugin']) : null;
+    plugin =
+        json['plugin'] != null ? PluginInfo.fromJson(json['plugin']) : null;
   }
 }

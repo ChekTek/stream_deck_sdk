@@ -41,7 +41,8 @@ class Plugin extends API {
   }
 
   void setImage(String context, String image, {int target = 0, int state = 0}) {
-    this.send(context, EventsSent.setImage, {'image': image, 'target': target, 'state': state});
+    this.send(context, EventsSent.setImage,
+        {'image': image, 'target': target, 'state': state});
   }
 
   void setFeedback(String context, String feedback) {
@@ -53,19 +54,24 @@ class Plugin extends API {
   }
 
   void onDeviceDidConnect(Function(DeviceDidConnect event) callback) {
-    EventManager.on<DeviceDidConnect>(EventsReceived.deviceDidConnect, callback);
+    EventManager.on<DeviceDidConnect>(
+        EventsReceived.deviceDidConnect, callback);
   }
 
   void onDeviceDidDisconnect(Function(DeviceDidDisconnect event) callback) {
-    EventManager.on<DeviceDidDisconnect>(EventsReceived.deviceDidDisconnect, callback);
+    EventManager.on<DeviceDidDisconnect>(
+        EventsReceived.deviceDidDisconnect, callback);
   }
 
   void onApplicationDidLaunch(Function(ApplicationDidLaunch event) callback) {
-    EventManager.on<ApplicationDidLaunch>(EventsReceived.applicationDidLaunch, callback);
+    EventManager.on<ApplicationDidLaunch>(
+        EventsReceived.applicationDidLaunch, callback);
   }
 
-  void onApplicationDidTerminate(Function(ApplicationDidTerminate event) callback) {
-    EventManager.on<ApplicationDidTerminate>(EventsReceived.applicationDidTerminate, callback);
+  void onApplicationDidTerminate(
+      Function(ApplicationDidTerminate event) callback) {
+    EventManager.on<ApplicationDidTerminate>(
+        EventsReceived.applicationDidTerminate, callback);
   }
 
   void onSystemDidWakeUp(Function(SystemDidWakeUp event) callback) {
