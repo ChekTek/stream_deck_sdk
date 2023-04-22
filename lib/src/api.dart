@@ -24,12 +24,14 @@ import 'events.dart';
 import 'events/did_receive_settings.dart';
 import 'plugin_arguments.dart';
 
+/// API class containing all required code to establish a connection with the Stream Deck Software
 abstract class API {
   int? _port;
   String? uuid;
   Info? _info;
   WebSocket? _websocket;
 
+  /// Connect to the Stream Deck Software
   Future<void> connect(PluginArguments arguments) async {
     this._port = arguments.port;
     this.uuid = arguments.pluginUuid;
@@ -152,6 +154,7 @@ abstract class API {
     );
   }
 
+  /// Send a message to the Stream Deck Software
   void send(String context, String event, [dynamic payload]) {
     if (_websocket == null) {
       throw Exception('WebSocket is not connected');
@@ -166,34 +169,41 @@ abstract class API {
     this._websocket?.add(message);
   }
 
+  /// Write a message to the log file
   void logMessage(String message) {
     this.send(this.uuid!, EventsSent.logMessage, {
       "message": message,
     });
   }
 
+  /// Securely save the plugin's persistent data
   void setGlobalSettings(dynamic payload) {
     this.send(this.uuid!, EventsSent.setGlobalSettings, payload);
   }
 
+  /// Request the plugin's persistent data. StreamDeck does not return the data, but trigger the plugin/property inspectors didReceiveGlobalSettings event
   void getGlobalSettings() {
     this.send(this.uuid!, EventsSent.getGlobalSettings, null);
   }
 
+  /// Opens a URL in the default web browser
   void openUrl(String url) {
     this.send(this.uuid!, EventsSent.openUrl, {
       "url": url,
     });
   }
 
+  /// Registers a callback function for when Stream Deck is connected
   void onConnected(Function(dynamic event) callback) {
     EventManager.on(EventsReceived.connected, callback);
   }
 
+  /// Registers a callback function for the didReceiveGlobalSettings event, which fires when calling getGlobalSettings
   void onDidReceiveGlobalSettings(Function(dynamic event) callback) {
     EventManager.on(EventsReceived.didReceiveGlobalSettings, callback);
   }
 
+  /// Registers a callback function for the didReceiveSettings event, which fires when calling getSettings
   void onDidReceiveSettings(String action, Function(dynamic event) callback) {
     EventManager.on(action + EventsReceived.didReceiveSettings, callback);
   }

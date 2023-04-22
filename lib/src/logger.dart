@@ -4,8 +4,10 @@ import 'dart:io';
 import 'event_manager.dart';
 import 'events.dart';
 
+/// The log levels
 enum LogLevel { debug, log, warn, error }
 
+/// A simple logger that writes to a file and a websocket if provided
 abstract class Logger {
   static LogLevel logLevel = LogLevel.log;
   static WebSocket? websocket;
@@ -17,6 +19,7 @@ abstract class Logger {
     }
   }
 
+  /// Write to a log file and websocket if provided
   static debug(dynamic message) {
     if (logLevel.index <= LogLevel.debug.index) {
       String debugMessage;
@@ -29,6 +32,7 @@ abstract class Logger {
     }
   }
 
+  /// Write to a log file and websocket if provided
   static info(dynamic message) {
     if (logLevel.index <= LogLevel.log.index) {
       String infoMessage;
@@ -41,6 +45,7 @@ abstract class Logger {
     }
   }
 
+  /// Write to a log file and websocket if provided
   static warn(dynamic message) {
     if (logLevel.index <= LogLevel.warn.index) {
       String warnMessage;
@@ -53,6 +58,7 @@ abstract class Logger {
     }
   }
 
+  /// Write to a log file and websocket if provided
   static error(dynamic message) {
     if (logLevel.index <= LogLevel.error.index) {
       String errorMessage;

@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+/// The arguments passed to the plugin from the Stream Deck application
 class PluginArguments {
   final int port;
   final String pluginUuid;
@@ -13,6 +14,7 @@ class PluginArguments {
     required this.info,
   });
 
+  ///Parse the arguments passed to the plugin from the Stream Deck application
   factory PluginArguments.fromExecutableArgumentsList(List<String>? arguments) {
     if (arguments == null || arguments.length < 4) {
       return PluginArguments(
