@@ -15,7 +15,8 @@ abstract class EventsReceived {
   static const String willDisappear = 'willDisappear';
   static const String titleParametersDidChange = 'titleParametersDidChange';
   static const String propertyInspectorDidAppear = 'propertyInspectorDidAppear';
-  static const String propertyInspectorDidDisappear = 'propertyInspectorDidDisappear';
+  static const String propertyInspectorDidDisappear =
+      'propertyInspectorDidDisappear';
   static const String sendToPlugin = 'sendToPlugin';
   static const String dialRotate = 'dialRotate';
   static const String dialDown = 'dialDown';

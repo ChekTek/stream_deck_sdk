@@ -53,7 +53,8 @@ class Plugin extends API {
 
   /// Set the actions key image
   void setImage(String context, String image, {int target = 0, int state = 0}) {
-    this.send(context, EventsSent.setImage, {'image': image, 'target': target, 'state': state});
+    this.send(context, EventsSent.setImage,
+        {'image': image, 'target': target, 'state': state});
   }
 
   /// Set the properties of the layout on the Stream Deck + touch display
@@ -68,22 +69,27 @@ class Plugin extends API {
 
   /// Registers a callback function for the deviceDidConnect event, which fires when a device is plugged in
   void onDeviceDidConnect(Function(DeviceDidConnect event) callback) {
-    EventManager.on<DeviceDidConnect>(EventsReceived.deviceDidConnect, callback);
+    EventManager.on<DeviceDidConnect>(
+        EventsReceived.deviceDidConnect, callback);
   }
 
   /// Registers a callback function for the deviceDidDisconnect event, which fires when a device is unplugged
   void onDeviceDidDisconnect(Function(DeviceDidDisconnect event) callback) {
-    EventManager.on<DeviceDidDisconnect>(EventsReceived.deviceDidDisconnect, callback);
+    EventManager.on<DeviceDidDisconnect>(
+        EventsReceived.deviceDidDisconnect, callback);
   }
 
   /// Registers a callback function for the applicationDidLaunch event, which fires when the application starts
   void onApplicationDidLaunch(Function(ApplicationDidLaunch event) callback) {
-    EventManager.on<ApplicationDidLaunch>(EventsReceived.applicationDidLaunch, callback);
+    EventManager.on<ApplicationDidLaunch>(
+        EventsReceived.applicationDidLaunch, callback);
   }
 
   /// Registers a callback function for the applicationDidTerminate event, which fires when the application exits
-  void onApplicationDidTerminate(Function(ApplicationDidTerminate event) callback) {
-    EventManager.on<ApplicationDidTerminate>(EventsReceived.applicationDidTerminate, callback);
+  void onApplicationDidTerminate(
+      Function(ApplicationDidTerminate event) callback) {
+    EventManager.on<ApplicationDidTerminate>(
+        EventsReceived.applicationDidTerminate, callback);
   }
 
   /// Registers a callback function for the systemDidWakeUp event, which fires when the computer wakes
