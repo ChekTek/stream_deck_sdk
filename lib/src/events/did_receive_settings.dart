@@ -1,5 +1,6 @@
 import 'event.dart';
 
+/// Fires after the `setSettings` or `getSettings` API is called
 class DidReceiveSettings extends DeviceEvent {
   late _Payload payload;
 

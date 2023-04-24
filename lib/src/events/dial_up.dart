@@ -1,5 +1,6 @@
 import 'event.dart';
 
+/// Fires when the dial is released
 class DialUp extends DeviceEvent {
   late _Payload payload;
 

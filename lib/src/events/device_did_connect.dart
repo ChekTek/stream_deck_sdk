@@ -1,5 +1,6 @@
 import 'event.dart';
 
+/// Fires when a Stream Deck device is connected to the computer
 class DeviceDidConnect extends Event {
   late String device;
   late _DeviceInfo deviceInfo;

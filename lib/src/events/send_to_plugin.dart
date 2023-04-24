@@ -1,5 +1,6 @@
 import 'event.dart';
 
+/// Fires when the `sendToPlugin` API is called
 class SendToPlugin extends ContextEvent {
   dynamic payload;
 

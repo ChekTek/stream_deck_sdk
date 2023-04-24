@@ -1,5 +1,6 @@
 import 'event.dart';
 
+/// Fires when an application registed in the plugin's manifest is opened
 class ApplicationDidLaunch extends Event {
   late _Payload payload;
 

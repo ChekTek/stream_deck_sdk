@@ -1,5 +1,6 @@
 import 'event.dart';
 
+/// Fires when the dial pressed down
 class DialDown extends DeviceEvent {
   late _Payload payload;
 

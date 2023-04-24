@@ -1,5 +1,6 @@
 import 'event.dart';
 
+/// Fires when the dial is rotated
 class DialRotate extends DeviceEvent {
   late _Payload payload;
 

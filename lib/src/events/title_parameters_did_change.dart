@@ -1,5 +1,6 @@
 import 'event.dart';
 
+/// Fires when the title of a key changes
 class TitleParametersDidChange extends DeviceEvent {
   late _Payload payload;
 

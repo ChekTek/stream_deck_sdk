@@ -33,6 +33,7 @@ class PluginArguments {
   }
 }
 
+/// Stream Deck application information
 class Application {
   String? font;
   String? language;
@@ -122,6 +123,7 @@ class PluginInfo {
   }
 }
 
+/// Stream Deck application and device information
 class Info {
   Application? application;
   Colors? colors;

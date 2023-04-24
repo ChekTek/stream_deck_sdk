@@ -1,5 +1,6 @@
 import 'event.dart';
 
+/// Fires when the `sendToPropertyInspector` API is called
 class SendToPropertyInspector extends ContextEvent {
   dynamic payload;
 

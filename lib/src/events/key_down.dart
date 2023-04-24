@@ -1,5 +1,6 @@
 import 'event.dart';
 
+/// Fires when a key is pressed down
 class KeyDown extends DeviceEvent {
   late _Payload payload;
 

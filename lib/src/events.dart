@@ -1,3 +1,4 @@
+/// Events that can be recieved from Stream Deck
 abstract class EventsReceived {
   static const String connected = 'connected';
   static const String didReceiveGlobalSettings = 'didReceiveGlobalSettings';
@@ -14,8 +15,7 @@ abstract class EventsReceived {
   static const String willDisappear = 'willDisappear';
   static const String titleParametersDidChange = 'titleParametersDidChange';
   static const String propertyInspectorDidAppear = 'propertyInspectorDidAppear';
-  static const String propertyInspectorDidDisappear =
-      'propertyInspectorDidDisappear';
+  static const String propertyInspectorDidDisappear = 'propertyInspectorDidDisappear';
   static const String sendToPlugin = 'sendToPlugin';
   static const String dialRotate = 'dialRotate';
   static const String dialDown = 'dialDown';
@@ -23,6 +23,7 @@ abstract class EventsReceived {
   static const String touchTap = 'touchTap';
 }
 
+/// Events that can be sent to Stream Deck
 abstract class EventsSent {
   static const String getGlobalSettings = 'getGlobalSettings';
   static const String getSettings = 'getSettings';

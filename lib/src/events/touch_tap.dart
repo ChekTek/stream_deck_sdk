@@ -1,5 +1,6 @@
 import 'event.dart';
 
+/// Fires when a touch display is tapped
 class TouchTap extends DeviceEvent {
   late _Payload payload;
 

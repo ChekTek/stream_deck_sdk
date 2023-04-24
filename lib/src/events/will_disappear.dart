@@ -1,5 +1,6 @@
 import 'event.dart';
 
+/// Fires when the key or dial action disappears
 class WillDisappear extends DeviceEvent {
   late _Payload payload;
 

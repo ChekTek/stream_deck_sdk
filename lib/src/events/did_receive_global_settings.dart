@@ -1,5 +1,6 @@
 import 'event.dart';
 
+/// Fires after the `setGlobalSettings` or `getGlobalSettings` API is called
 class DidReceiveGlobalSettings extends Event {
   late _Payload payload;
 
