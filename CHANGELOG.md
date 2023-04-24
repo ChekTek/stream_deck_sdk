@@ -1,3 +1,7 @@
+## 1.0.1
+
+- code formatting
+
 ## 1.0.0
 
 - first release
