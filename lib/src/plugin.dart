@@ -7,9 +7,7 @@ import 'events/device_did_connect.dart';
 import 'events/device_did_disconnect.dart';
 import 'events/system_did_wake_up.dart';
 
-/// @class StreamDeck
-/// StreamDeck object containing all required code to establish
-/// communication with SD-Software and the Property Inspector
+/// Establish communication with Stream Deck
 class Plugin extends API {
   /// Display alert triangle on actions key
   void showAlert(String context) {
